@@ -1,0 +1,29 @@
+{
+  "name": "ful-ms-server",
+  "version": "1.0.0",
+  "description": "Ful Microservice Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snakeful/ful-ms-svr.git"
+  },
+  "keywords": [
+    "ful",
+    "microservice",
+    "ms",
+    "server"
+  ],
+  "author": "Carlos Ful <fulblind@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snakeful/ful-ms-svr/issues"
+  },
+  "homepage": "https://github.com/snakeful/ful-ms-svr#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "get-port": "^3.1.0"
+  }
+}
