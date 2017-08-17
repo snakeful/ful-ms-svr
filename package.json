@@ -1,5 +1,5 @@
 {
-  "name": "ful-ms-server",
+  "name": "ful-ms-svr",
   "version": "1.0.0",
   "description": "Ful Microservice Server",
   "main": "index.js",
