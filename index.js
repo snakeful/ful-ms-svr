@@ -19,7 +19,11 @@ Object.keys(ifaces).forEach(ifname => {
 function listen() {
   server.listen(server.port, () => {
     if (server.registerServer) {
-      server.registerServer();
+      server.registerServer().then(msg => {
+        console.log(msg);
+      }).catch(err => {
+        console.log(`Error registering server. Code ${err.code} Call ${err.syscall} Address ${err.address} Port ${err.port}`);
+      });
     }
     console.log(`Server on port ${server.port}`);
   });
@@ -57,17 +61,14 @@ function registerServer () {
       });
 
       res.on('end', () => {
-        console.log(`Register server status: ${res.statusCode}`);
         if (res.statusCode !== 200) {
           return reject(res);
         }
-        resolve();
+        resolve(`Register server status: ${res.statusCode}`);
       });
     });
     req.on('error', error => {
-      reject({
-        message: error
-      });
+      reject(error);
     });
     req.write(payload);
     req.end();

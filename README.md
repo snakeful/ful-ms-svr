@@ -35,7 +35,11 @@ if (cluster.isMaster) {
   server.discoveryHost = '127.0.0.1';
   server.discoveryPort = 81;
   server.unregisterServer = unregisterServer;
-  registerServer();
+  registerServer().then(msg => {
+    console.log(msg);
+  }).catch(err => {
+    console.log(`Error registering server. Code ${err.code} Call ${err.syscall} Address ${err.address} Port ${err.port}`);
+  });;
   // Clustering servers
   cluster.schedulingPolicy = cluster.SCHED_RR;
   for (let processorId = 0; processorId < processors.length; processorId++) {
