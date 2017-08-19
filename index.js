@@ -53,7 +53,8 @@ function registerServer () {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(payload)
+        'Content-Length': Buffer.byteLength(payload),
+        'x-socket-id': server.socketId || 'default'
       }
     }, res => {
       res.on('data', data => {
@@ -81,7 +82,10 @@ function unregisterServer () {
     host: server.discoveryHost,
     port: server.discoveryPort,
     path: `/api/sockets?host=${server.ipAddress4}&port=${server.port}`,
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {
+      'x-socket-id': server.socketId || 'default'
+    }
   }, res => {
     res.on('data', data => {
       console.log(`Unregister server data: ${data}`);

@@ -6,6 +6,7 @@ if (cluster.isMaster) {
   server.port = port;
   server.discoveryHost = process.argv[3] || '127.0.0.1';
   server.discoveryPort = parseInt(process.argv[4] || 81);
+  server.socketId = 'default';
   server.unregisterServer = unregisterServer;
   registerServer().then(msg => {
     console.log(msg);

@@ -17,6 +17,7 @@ const { server, registerServer, unregisterServer } = require('ful-ms-svr');
 let port = 3000;
 console.log(`Running from testing. ${process.pid}`);
 server.port = port;
+server.socketId = 'default';
 server.registerServer = registerServer;
 server.unregisterServer = unregisterServer;
 server.discoveryHost = '127.0.0.1';
@@ -34,6 +35,7 @@ if (cluster.isMaster) {
   server.port = port;
   server.discoveryHost = '127.0.0.1';
   server.discoveryPort = 81;
+  server.socketId = 'default';
   server.unregisterServer = unregisterServer;
   registerServer().then(msg => {
     console.log(msg);
