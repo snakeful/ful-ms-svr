@@ -138,7 +138,6 @@
   process.on('uncaughtException', onExit);
 
   module.exports = {
-    express: express,
     server: server,
     registerServer: registerServer,
     unregisterServer: unregisterServer
