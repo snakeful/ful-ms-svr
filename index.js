@@ -6,7 +6,6 @@
   const ifaces = require('os').networkInterfaces();
   server.use(require('helmet')());
   server.use(require('cors')());
-  server.use(require('body-parser').json());
   server.use(require('compression')());
 
   // Get the ipv4 address from which the server is running
